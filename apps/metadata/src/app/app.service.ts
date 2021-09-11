@@ -23,9 +23,36 @@
 
 import { Injectable } from '@nestjs/common';
 
+export type Hashtag = {
+  id: string;
+  slug: string;
+  name: string;
+  key: string;
+  created: string;
+  updated: string;
+}
+
 @Injectable()
 export class AppService {
+  private readonly hashtags: Hashtag[] = [
+    {
+      id: "{_id}",
+      slug: "#castcle",
+      name: "Castcle",
+      key: "hashtag.castcle",
+      created: "2021-06-05T15:40:29Z",
+      updated: "2021-06-05T15:40:29Z"
+    }
+  ]
+
   getData(): { message: string } {
     return { message: 'Welcome to metadata!' };
+  }
+
+  getHashtags(): any {
+    return {
+      message: "success message",
+      payload: this.hashtags
+    }
   }
 }
