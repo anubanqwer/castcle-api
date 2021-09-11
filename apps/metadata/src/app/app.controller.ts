@@ -21,9 +21,10 @@
  * or have any questions.
  */
 
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Request, Post, UseGuards } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('metadata')
 export class AppController {
@@ -34,6 +35,7 @@ export class AppController {
     return this.appService.getData();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('hashtags')
   getHashtags() {
     return this.appService.getHashtags();
