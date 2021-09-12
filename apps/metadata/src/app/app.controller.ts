@@ -26,7 +26,7 @@ import { Controller, Get, Request, Post, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
-@Controller('metadata')
+@Controller({path: "metadata", version: "1.0" })
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
